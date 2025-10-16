@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    ASSIGNMENT 3 - All tasks in one single HTML file
+    Each task is contained in its own section and labeled with comments.
+    Note: Where older/obsolete tags were requested (e.g. <frameset>), a valid legacy example
+    is shown inside an HTML comment, plus an HTML5-compatible alternative is provided.
+  -->
+  <meta charset="UTF-8"> <!-- Task 5 & 13: ensure UTF-8 -->
+  <meta name="author" content="Your Name"> <!-- Task 5 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Task 5 -->
+  <title>Assignment 3 - All Tasks</title>
+
+  <!-- Task 20: include head elements required by that task (base, link, style, script) -->
+  <!-- <base> sets the base URL for relative links -->
+  <base href="./">
+  <!-- <link> example for a favicon (file not required to exist) -->
+  <link rel="icon" href="favicon.ico">
+  <!-- <style> can be empty but included as requested (no CSS used intentionally) -->
+  <style>
+    /* Intentionally left empty (assignment requested "can be empty") */
+  </style>
+  <!-- <script> can be empty as requested (no JS to be used for assignments) -->
+  <script>
+    /* Intentionally left empty (no JavaScript allowed for this assignment) */
+  </script>
+</head>
+<body>
+  <h1>Assignment 3 — Combined HTML Solutions</h1>
+
+  <!-- ============================
+       Task 1
+       Embed a YouTube video using an iframe with width/height as percentages.
+       ============================ -->
+  <section>
+    <h2>Task 1: YouTube embed (percentage sizes)</h2>
+    <!-- Example: YouTube video (replace src with any video you want) -->
+    <iframe
+      title="YouTube Video Example"
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      width="80%"
+      height="45%"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <p>Note: width and height are set using percentage values so the iframe resizes with the browser window.</p>
+  </section>
+
+  <!-- ============================
+       Task 2
+       Embed Google Map using an iframe with title, width, height, loading="lazy".
+       Add a comment explaining loading="lazy".
+       ============================ -->
+  <section>
+    <h2>Task 2: Google Map (with loading="lazy")</h2>
+
+    <!--
+      The loading="lazy" attribute defers loading the iframe's resource until it is close to
+      being visible on the screen, which can improve page load performance.
+    -->
+    <iframe
+      title="Map showing my city"
+      src="https://www.google.com/maps?q=New+Delhi,+India&output=embed"
+      width="80%"
+      height="400"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <p>Map above is centered on an example city (replace with your school's or city's map link if desired).</p>
+  </section>
+
+  <!-- ============================
+       Task 3
+       Two iframes one below another: first displays introduction page, second favorite hobby page.
+       Use width and height attributes to make them balanced.
+       ============================ -->
+  <section>
+    <h2>Task 3: Two stacked iframes (Intro and Hobby)</h2>
+
+    <!-- In a real assignment these would point to separate HTML files like intro.html and hobby.html.
+         Here we use simple example srcdoc content for demonstration (srcdoc is allowed in plain HTML). -->
+    <iframe title="Introduction Page" width="80%" height="250"
+            srcdoc='
+              <html><body><h3>Introduction</h3><p>Hello — I am [Your Name]. I am a student and developer. Welcome to my intro page.</p></body></html>'>
+    </iframe>
+    <br><br>
+    <iframe title="Hobby Page" width="80%" height="250"
+            srcdoc='
+              <html><body><h3>My Hobby</h3><p>My favorite hobby is photography and coding small projects.</p></body></html>'>
+    </iframe>
+  </section>
+
+  <!-- ============================
+       Task 4
+       Create frameset layout using <frameset> and <frame> tags (legacy).
+       Because <frameset> is not valid in HTML5, include legacy example in a comment and an iframe-based equivalent.
+       ============================ -->
+  <section>
+    <h2>Task 4: Frameset layout (legacy example and HTML5 alternative)</h2>
+
+    <!--
+      LEGACY frameset example (works if served as HTML 4.01 frameset document).
+      It is shown here as a comment because modern pages use HTML5 (where frameset is obsolete):
+
+      <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+      <html>
+        <head><title>Frameset Example</title></head>
+        <frameset rows="20%,80%">
+          <frame src="nav.html" name="topFrame">
+          <frame src="welcome.html" name="bottomFrame">
+        </frameset>
+      </html>
+
+      In nav.html you would put navigation links (Home, About, Contact).
+      In welcome.html you would put: <h1>Welcome to My Website</h1>
+    -->
+
+    <!-- HTML5-friendly alternative using an iframe to simulate bottom content and a small top iframe for navigation -->
+    <iframe title="Top Navigation" width="100%" height="80" srcdoc='
+      <html><body>
+        <nav>
+          <a href="#home" target="_parent">Home</a> |
+          <a href="#about" target="_parent">About</a> |
+          <a href="#contact" target="_parent">Contact</a>
+        </nav>
+      </body></html>'>
+    </iframe>
+
+    <iframe title="Bottom Content" width="100%" height="200" srcdoc='
+      <html><body><h2>Welcome to My Website</h2></body></html>'>
+    </iframe>
+
+    <p>Note: The true <code>&lt;frameset&gt;</code> tag is obsolete in HTML5; the above comment shows how it would look.</p>
+  </section>
+
+  <!-- ============================
+       Task 5
+       Complete head section already used above. Add paragraph with English, Hindi, and Japanese text.
+       ============================ -->
+  <section>
+    <h2>Task 5: UTF-8 verification (English, Hindi, Japanese)</h2>
+    <p>English: Hello, welcome to the UTF-8 test page.</p>
+    <p>Hindi: नमस्ते, यह UTF-8 परीक्षण पृष्ठ है।</p>
+    <p>Japanese: こんにちは、これはUTF-8テストページです。</p>
+  </section>
+
+  <!-- ============================
+       Task 6
+       User Registration Form with required fields
+       ============================ -->
+  <section>
+    <h2>Task 6: User Registration Form</h2>
+    <form action="#" method="post">
+      <label>Full Name: <input type="text" name="fullname" required></label><br><br>
+      <label>Email Address: <input type="email" name="email" required></label><br><br>
+      <label>Password: <input type="password" name="password" required></label><br><br>
+      <label>Confirm Password: <input type="password" name="confirm_password" required></label><br><br>
+      <input type="submit" value="Register">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 7
+       Login form with hidden CSRF token and comment explaining its purpose
+       ============================ -->
+  <section>
+    <h2>Task 7: Login Form with CSRF token</h2>
+
+    <!--
+      A CSRF (Cross-Site Request Forgery) token is a unique, secret, and unpredictable value generated by the server
+      and included in forms. It helps the server verify that the form submission originated from the legitimate site
+      and not from a malicious third-party page attempting to perform actions on behalf of the user.
+    -->
+    <form action="#" method="post">
+      <label>Username: <input type="text" name="username" required></label><br><br>
+      <label>Password: <input type="password" name="password" required></label><br><br>
+      <input type="hidden" name="csrf_token" value="dummy-token-1234567890">
+      <input type="submit" value="Login">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 8
+       Feedback Form with textarea, radio buttons, method="post", action="#"
+       ============================ -->
+  <section>
+    <h2>Task 8: Feedback Form</h2>
+    <form method="post" action="#">
+      <label for="feedback">Your feedback:</label><br>
+      <textarea id="feedback" name="feedback" rows="6" cols="60" required></textarea><br><br>
+
+      Rating:<br>
+      <label><input type="radio" name="rating" value="good" required> Good</label><br>
+      <label><input type="radio" name="rating" value="average" required> Average</label><br>
+      <label><input type="radio" name="rating" value="poor" required> Poor</label><br><br>
+
+      <input type="submit" value="Submit Feedback">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 9
+       File Upload Form restricted to .jpg and .png, with note
+       ============================ -->
+  <section>
+    <h2>Task 9: File Upload Form (.jpg, .png only)</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <label>Upload image: <input type="file" name="imagefile" accept=".jpg,.jpeg,.png" required></label><br><br>
+      <p>Allowed file types: .jpg, .jpeg, .png only. Maximum file size should be enforced on the server side.</p>
+      <input type="submit" value="Upload">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 10
+       Contact Form with placeholders and required attributes
+       ============================ -->
+  <section>
+    <h2>Task 10: Contact Form</h2>
+    <form action="#" method="post">
+      <label>Full Name: <input type="text" name="fullname" placeholder="Your full name" required></label><br><br>
+      <label>Email: <input type="email" name="email" placeholder="name@example.com" required></label><br><br>
+      <label>Subject: <input type="text" name="subject" placeholder="Subject" required></label><br><br>
+      <label>Message:<br>
+        <textarea name="message" placeholder="Write your message here..." rows="6" cols="60" required></textarea>
+      </label><br><br>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 11
+       Student info form: Name, Roll Number, Course (select) with default disabled selected
+       ============================ -->
+  <section>
+    <h2>Task 11: Student Information Form</h2>
+    <form action="#" method="post">
+      <label>Name: <input type="text" name="student_name" required></label><br><br>
+      <label>Roll Number: <input type="text" name="roll_no" required></label><br><br>
+      <label>Course:
+        <select name="course" required>
+          <option value="" disabled selected>Select Course</option>
+          <option value="btech">B.Tech</option>
+          <option value="bsc">B.Sc</option>
+          <option value="ba">B.A</option>
+          <option value="mca">MCA</option>
+        </select>
+      </label><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 12
+       Paragraph that shows HTML entities for <, >, &, ", ', and ©, TM, ®.
+       ============================ -->
+  <section>
+    <h2>Task 12: HTML Entities</h2>
+    <p>
+      &lt; &gt; &amp; &quot; &apos; <br>
+      &copy; &trade; &reg;
+    </p>
+  </section>
+
+  <!-- ============================
+       Task 13
+       Text in English, Hindi, and French with meta charset (already in head)
+       ============================ -->
+  <section>
+    <h2>Task 13: Multilingual (English, Hindi, French)</h2>
+    <p>English: Welcome to the multilingual test.</p>
+    <p>Hindi: यह एक बहुभाषी परीक्षण है।</p>
+    <p>French: Bienvenue au test multilingue.</p>
+  </section>
+
+  <!-- ============================
+       Task 14
+       Embed an external website (Wikipedia) using iframe and add a paragraph about embedding restrictions.
+       ============================ -->
+  <section>
+    <h2>Task 14: Embed external website (Wikipedia)</h2>
+    <iframe title="Wikipedia" src="https://www.wikipedia.org" width="90%" height="400"></iframe>
+    <p>Some websites may not allow embedding for security reasons.</p>
+  </section>
+
+  <!-- ============================
+       Task 15
+       Payment form with cardholder name, card number, expiry date, CVV (all required)
+       ============================ -->
+  <section>
+    <h2>Task 15: Payment Form</h2>
+    <form action="#" method="post">
+      <label>Cardholder Name: <input type="text" name="cardholder" required></label><br><br>
+      <label>Card Number: <input type="text" name="cardnumber" inputmode="numeric" required></label><br><br>
+      <label>Expiry Date: <input type="month" name="expiry" required></label><br><br>
+      <label>CVV: <input type="password" name="cvv" maxlength="4" required></label><br><br>
+      <input type="submit" value="Pay Now">
+    </form>
+  </section>
+
+  <!-- ============================
+       Task 16
+       Demonstrate URI encoding — link with special characters encoded
+       ============================ -->
+  <section>
+    <h2>Task 16: URI Encoding Example</h2>
+    <p>Unencoded URL example (not correct):</p>
+    <p><a href="https://example.com/search?query=HTML & CSS">https://example.com/search?query=HTML & CSS</a></p>
+
+    <p>Correct encoded version using %20 for spaces and %26 for '&':</p>
+    <p>
+      <a href="https://example.com/search?query=HTML%20%26%20CSS">
+        https://example.com/search?query=HTML%20%26%20CSS
+      </a>
+    </p>
+  </section>
+
+  <!-- ============================
+       Task 17
+       Create form.html and result.html workflow in one file:
+       - The form targets an iframe named "resultFrame".
+       - We provide the result.html content inside an iframe using srcdoc to simulate result.html.
+       ============================ -->
+  <section>
+    <h2>Task 17: form.html and result.html via iframe (single-file simulation)</h2>
+
+    <!-- The form targets the iframe named resultFrame. In a multi-file setup:
+         - form.html would contain the form with target="resultFrame" and action="result.html"
+         - result.html would contain "Form successfully submitted."
+         Here we simulate result.html by giving the iframe an initial empty srcdoc; the form won't actually navigate
+         without a server, but this demonstrates the HTML structure required. -->
+    <form action="result.html" method="post" target="resultFrame">
+      <label>Enter text: <input type="text" name="sampletext" required></label>
+      <input type="submit" value="Submit">
+    </form>
+
+    <h3>Result (iframe):</h3>
+    <!-- Simulated result.html content using srcdoc -->
+    <iframe name="resultFrame" title="Result Frame" width="80%" height="120"
+            srcdoc='<html><body><h3>Form successfully submitted.</h3></body></html>'>
+    </iframe>
+
+    <p>In a real two-file setup, create <strong>result.html</strong> with the message and the form would load it into the iframe.</p>
+  </section>
+
+  <!-- ============================
+       Task 18
+       Paragraph with long and short quotations: blockquote and q, and include an HTML entity.
+       ============================ -->
+  <section>
+    <h2>Task 18: Long and short quotations</h2>
+
+    <blockquote>
+      "Education is the most powerful weapon which you can use to change the world." — a long quoted passage.
+    </blockquote>
+
+    <p>
+      He said <q>Learning never ends &amp; curiosity drives progress</q> inside a sentence.
+    </p>
+  </section>
+
+  <!-- ============================
+       Task 19
+       Form demonstrating autocomplete="off" and required on fields; note below explaining security benefit.
+       ============================ -->
+  <section>
+    <h2>Task 19: Form security attributes (autocomplete off)</h2>
+    <form action="#" method="post" autocomplete="off">
+      <label>Username: <input type="text" name="username" required></label><br><br>
+      <label>Password: <input type="password" name="password" required></label><br><br>
+      <input type="submit" value="Login">
+    </form>
+
+    <p><strong>Note:</strong> Turning off autocomplete can help reduce the chance of sensitive credentials being auto-filled
+       on shared/public computers or being stored in the browser's autocomplete history, which improves security in certain contexts.
+       However, it can also reduce usability for users who rely on password managers — server-side measures and secure storage are still essential.</p>
+  </section>
+
+  <!-- ============================
+       Task 20
+       Page including all important head elements and comments explaining each tag.
+       (The head already includes these; we summarize them here for clarity.)
+       ============================ -->
+  <section>
+    <h2>Task 20: Head elements explanation</h2>
+    <p>
+      &lt;title&gt; — Specifies the title of the document shown in the browser tab.<br>
+      &lt;meta charset="UTF-8"&gt; — Declares the character encoding for the document.<br>
+      &lt;meta name="description"&gt; and &lt;meta name="author"&gt; — Provide metadata about the page and author.<br>
+      &lt;base href="..."&gt; — Sets the base URL for relative links on the page.<br>
+      &lt;link rel="icon" href="..."/&gt; — Links external resources such as a favicon.<br>
+      &lt;style&gt; — Embeds CSS rules (kept empty per assignment instructions).<br>
+      &lt;script&gt; — Embeds JavaScript (kept empty per assignment instructions).
+    </p>
+    <p>All these tags were included inside the <code>&lt;head&gt;</code> at the top of this document.</p>
+  </section>
+
+  <hr>
+  <p>End of combined assignment file. Replace example values/URLs/text with your own where needed.</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Plans</title>
+<link rel="stylesheet" href="pricing.css">
+</head>
+<body>
+<div class="plans">
+<div class="plan"><h3>Basic</h3><ul><li>1 Project</li><li>Email Support</li></ul><p>$5/mo</p><a href="#">Choose</a></div>
+<div class="plan popular"><h3>Standard</h3><ul><li>5 Projects</li><li>Chat Support</li></ul><p>$10/mo</p><a href="#">Choose</a></div>
+<div class="plan"><h3>Premium</h3><ul><li>Unlimited</li><li>24/7 Support</li></ul><p>$20/mo</p><a href="#">Choose</a></div>
+</div>
+</body>
+</html>
+
+
+<!-- css -->
+
+body{margin:0;font-family:Arial;}
+.plans{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:40px;}
+.plan{background:#f4f4f4;border-radius:10px;padding:20px;width:200px;text-align:center;transition:.3s;box-shadow:0 2px 5px rgba(0,0,0,.2);}
+.plan:hover{transform:scale(1.05);background:#e0f7fa;}
+.popular{border:2px solid #00796b;}
+a{display:inline-block;margin-top:10px;padding:8px 16px;background:#00796b;color:#fff;text-decoration:none;border-radius:5px;}

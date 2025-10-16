@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery</title>
+<link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+<div class="gallery">
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 1</span></div>
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 2</span></div>
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 3</span></div>
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 4</span></div>
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 5</span></div>
+<div class="photo"><img src="https://via.placeholder.com/200"><span>Caption 6</span></div>
+</div>
+</body>
+</html>
+
+
+<!-- CSS -->
+
+body{margin:0;}
+.gallery{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:20px;}
+.photo{position:relative;overflow:hidden;}
+.photo img{border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:.3s;}
+.photo:hover img{transform:scale(1.1);}
+.photo span{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;text-align:center;opacity:0;transition:.3s;}
+.photo:hover span{opacity:1;}

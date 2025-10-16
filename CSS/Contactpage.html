@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<link rel="stylesheet" href="contact.css">
+</head>
+<body>
+<form>
+<h2>Contact Us</h2>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Subject">
+<textarea placeholder="Message"></textarea>
+<button>Send</button>
+</form>
+</body>
+</html>
+
+<!-- CSS -->
+
+body{margin:0;display:flex;justify-content:center;align-items:center;height:100vh;background:#f0f0f0;font-family:Arial;}
+form{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,.2);display:flex;flex-direction:column;gap:10px;width:300px;}
+input,textarea{padding:10px;border-radius:5px;border:1px solid #ccc;}
+input:focus,textarea:focus{border-color:#007bff;}
+button{padding:10px;background:#007bff;color:#fff;border:none;border-radius:5px;cursor:pointer;}

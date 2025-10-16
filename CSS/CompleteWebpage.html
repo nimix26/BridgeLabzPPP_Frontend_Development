@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Layout</title>
+<link rel="stylesheet" href="complete.css">
+</head>
+<body>
+<header>
+<nav>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+<section class="hero"><h1>Welcome to My Website</h1></section>
+<section class="about"><div class="text">About Section</div><img src="https://via.placeholder.com/300"></section>
+<section class="services">
+<div class="service">Service 1</div>
+<div class="service">Service 2</div>
+<div class="service">Service 3</div>
+</section>
+<section class="contact">
+<form><input type="text" placeholder="Name"><input type="email" placeholder="Email"><button>Send</button></form>
+</section>
+<footer>© 2025 My Website</footer>
+</body>
+</html>
+
+
+<!-- CSS -->
+
+body{margin:0;font-family:Arial;}
+header{position:sticky;top:0;background:#333;padding:10px;text-align:center;}
+nav a{color:#fff;margin:0 10px;text-decoration:none;}
+.hero{background:url('https://via.placeholder.com/1200x400') no-repeat center/cover;color:#fff;text-align:center;padding:100px 0;}
+.about{display:flex;justify-content:center;align-items:center;gap:20px;padding:40px;}
+.services{display:flex;justify-content:center;gap:20px;padding:40px;}
+.service{background:rgba(0,123,255,0.1);border:1px solid #007bff;padding:20px;border-radius:10px;flex:1;text-align:center;}
+.contact{background:#f4f4f4;padding:40px;text-align:center;}
+form{display:flex;flex-direction:column;gap:10px;max-width:300px;margin:auto;}
+footer{background:#333;color:#fff;text-align:center;padding:10px;}

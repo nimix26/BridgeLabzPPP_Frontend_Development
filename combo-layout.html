@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Layout</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; line-height: 1.6; background: #f8f8f8; }
+        .combo-wrapper { max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .combo-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background-color: #333; color: white; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .combo-nav a { color: white; margin-left: 1rem; }
+        .combo-main-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 2rem; padding: 2rem; }
+        .combo-article { }
+        .combo-sidebar { background: #f4f4f4; padding: 1rem; border-radius: 5px; }
+        .nested-flex-container { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+        .flex-box { flex: 1; background: #e9ecef; padding: 1.5rem; text-align: center; border-radius: 5px; }
+        .combo-footer { text-align: center; padding: 1.5rem; background-color: #333; color: white; margin-top: 2rem; }
+        .animated-title { animation: fadeInDown 1s ease-out; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            .combo-main-grid { grid-template-columns: 1fr; }
+            .nested-flex-container { flex-direction: column; }
+            .combo-header { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="combo-wrapper">
+        <header class="combo-header">
+            <div class="logo">Logo</div>
+            <nav class="combo-nav"> <a href="#">Link 1</a> <a href="#">Link 2</a> </nav>
+        </header>
+        <div class="combo-main-grid">
+            <article class="combo-article">
+                <h1 class="animated-title">Main Article Title</h1>
+                <p>Article content goes here...</p>
+                <div class="nested-flex-container">
+                    <div class="flex-box">Box 1</div>
+                    <div class="flex-box">Box 2</div>
+                    <div class="flex-box">Box 3</div>
+                </div>
+            </article>
+            <aside class="combo-sidebar"> <h3>Sidebar</h3> </aside>
+        </div>
+        <footer class="combo-footer"> <p>&copy; 2025 Combined Layout</p> </footer>
+    </div>
+</body>
+</html>

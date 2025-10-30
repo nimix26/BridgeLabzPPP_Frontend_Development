@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Portfolio</title>
+    <style>
+        /* Basic Reset & Body */
+        body { font-family: Arial, sans-serif; margin: 0; line-height: 1.6; }
+        /* Header */
+        .portfolio-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background-color: #333; color: white; }
+        .portfolio-header .logo { font-size: 1.5rem; font-weight: bold; }
+        .portfolio-header nav a { color: white; text-decoration: none; margin-left: 1rem; }
+        /* Main Content */
+        .portfolio-main { display: flex; padding: 2rem; }
+        .portfolio-main .about-me { flex: 2; padding-right: 2rem; }
+        .portfolio-main .image-section { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #f4f4f4; border-radius: 8px; font-style: italic; color: #777; min-height: 200px; }
+        /* Footer */
+        .portfolio-footer { display: flex; justify-content: center; align-items: center; padding: 1rem; background-color: #333; color: white; text-align: center; margin-top: 2rem; }
+        /* Responsive: Stack vertically below 700px */
+        @media (max-width: 700px) {
+            .portfolio-main { flex-direction: column; }
+            .portfolio-main .about-me { padding-right: 0; padding-bottom: 2rem; }
+            .portfolio-header { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="portfolio-header">
+        <div class="logo">Your Name</div>
+        <nav> <a href="#">Home</a> <a href="#">About</a> <a href="#">Contact</a> </nav>
+    </header>
+    <main class="portfolio-main">
+        <section class="about-me">
+            <h2>About Me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </section>
+        <section class="image-section"> [Image of a professional profile picture] </section>
+    </main>
+    <footer class="portfolio-footer">
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

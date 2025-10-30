@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 4fr; grid-template-rows: auto 1fr; grid-template-areas: "header header" "sidebar main"; height: 100vh; grid-gap: 1.5rem; padding: 1.5rem; box-sizing: border-box; }
+        .dash-header { grid-area: header; background-color: #ffffff; padding: 1rem 2rem; font-size: 1.8rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 8px; }
+        .dash-sidebar { grid-area: sidebar; background-color: #ffffff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .dash-sidebar ul { list-style: none; padding: 0; margin: 0; }
+        .dash-sidebar li { padding: 0.8rem; cursor: pointer; border-radius: 5px; }
+        .dash-sidebar li:hover { background-color: #f0f0f0; }
+        .dash-main { grid-area: main; display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: auto auto; grid-gap: 1.5rem; }
+        .dash-box { background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .box-3 { grid-column: span 2; min-height: 250px; }
+        .dash-box:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        @media (max-width: 768px) {
+            .dashboard-grid { grid-template-columns: 1fr; grid-template-areas: "header" "sidebar" "main"; height: auto; }
+            .dash-main, .dash-main .box-3 { grid-template-columns: 1fr; grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-grid">
+        <header class="dash-header">Dashboard</header>
+        <aside class="dash-sidebar">
+            <ul> <li>Overview</li> <li>Analytics</li> <li>Reports</li> <li>Settings</li> </ul>
+        </aside>
+        <main class="dash-main">
+            <div class="dash-box box-1">Metrics 1</div>
+            <div class="dash-box box-2">Metrics 2</div>
+            <div class="dash-box box-3">Graph (Spans 2)</div>
+            <div class="dash-box box-4">Recent Activity</div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Homepage</title>
+    <style>
+        .homepage-body { font-family: Arial, sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .homepage-header { background-color: #2c3e50; padding: 1rem 0; }
+        .homepage-header nav { display: flex; justify-content: space-around; max-width: 800px; margin: 0 auto; }
+        .homepage-header nav a { color: white; text-decoration: none; font-size: 1.1rem; }
+        .homepage-main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 2rem; gap: 1.5rem; flex-wrap: wrap; }
+        .homepage-main .box { background-color: #ecf0f1; border: 1px solid #bdc3c7; border-radius: 5px; padding: 3rem 2rem; font-size: 1.5rem; text-align: center; min-width: 200px; transition: transform 0.3s ease; }
+        .homepage-main .box:hover { transform: rotate(2deg); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .homepage-footer { background-color: #34495e; color: white; text-align: center; padding: 1.5rem; width: 100%; }
+    </style>
+</head>
+<body class="homepage-body">
+    <header class="homepage-header">
+        <nav> <a href="#">Home</a> <a href="#">Services</a> <a href="#">Projects</a> <a href="#">Contact</a> </nav>
+    </header>
+    <main class="homepage-main">
+        <div class="box">Services</div>
+        <div class="box">Projects</div>
+        <div class="box">Contact</div>
+    </main>
+    <footer class="homepage-footer">
+        <p>Copyright &copy; 2025</p>
+    </footer>
+</body>
+</html>

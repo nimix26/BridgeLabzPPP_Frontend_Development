@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Image Gallery - Task 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    @media (max-width:700px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .gallery figure {
+      position: relative;
+      overflow: hidden;
+      width: 260px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+      background: #fff;
+      transition: transform 0.2s;
+      margin: 0;
+    }
+    .gallery img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      transition: transform 0.4s;
+    }
+    .gallery figure:hover img {
+      transform: scale(1.1);
+    }
+    .gallery .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20,20,20,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      border-radius: 16px;
+    }
+    .gallery figure:hover .overlay {
+      opacity: 1;
+    }
+    .gallery figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #fff;
+      background: rgba(0,0,0,0.55);
+      padding: 12px 14px 10px;
+      font-size: 1.1em;
+      letter-spacing: 0.01em;
+      border-radius: 0 0 16px 16px;
+      text-align: center;
+    }
+    body {
+      background: #f6f7fa;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 40px 0;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2 style="text-align:center;">Responsive Image Gallery (Task 3)</h2>
+    <div class="gallery">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" alt="Nature 1">
+        <div class="overlay"></div>
+        <figcaption>Sunrise in the Forest</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3a16?w=600" alt="Nature 2">
+        <div class="overlay"></div>
+        <figcaption>Mountain View</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?w=600" alt="Nature 3">
+        <div class="overlay"></div>
+        <figcaption>River Flow</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600" alt="Nature 4">
+        <div class="overlay"></div>
+        <figcaption>Calm Lake</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600" alt="Nature 5">
+        <div class="overlay"></div>
+        <figcaption>Desert Dunes</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?w=600" alt="Nature 6">
+        <div class="overlay"></div>
+        <figcaption>Foggy Hills</figcaption>
+      </figure>
+    </div>
+  </section>
+</body>
+</html>

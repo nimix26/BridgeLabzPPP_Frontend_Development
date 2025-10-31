@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Selector Demonstration - Task 4</title>
+  <style>
+    /* === Element selector: styles all <ul> elements === */
+    ul {
+      color: #1b5eaf;
+      margin-bottom: 14px;
+      font-size: 1.1em; /* element selector demo */
+    }
+
+    /* === Class selector: styles all elements with .highlight === */
+    .highlight {
+      background: #ffe6a7;
+      padding: 4px 10px; 
+      border-radius: 3px;
+      /* class selector demo */
+    }
+
+    /* === ID selector: styles the element with id="unique" === */
+    #unique {
+      color: #e85050;
+      font-weight: bold;
+      text-decoration: underline;
+      /* ID selector demo */
+    }
+
+    /* === Attribute selector: styles <a> tags with target="_blank" === */
+    a[target="_blank"] {
+      color: #1b8037;
+      font-style: italic;
+      /* attribute selector demo */
+    }
+
+    /* === Child combinator (>) : direct children only === */
+    .direct-list > li {
+      font-weight: bold;
+      color: #7c51e5;
+      /* child combinator demo */
+    }
+
+    /* === Adjacent sibling combinator (+): p following h3 === */
+    h3 + p {
+      color: #40415a;
+      margin-top: -8px;
+      /* adjacent sibling combinator demo */
+    }
+
+    /* === General sibling combinator (~): a after h4 === */
+    h4 ~ a {
+      color: #426de0;
+      /* general sibling combinator demo */
+    }
+
+    /* === Descendant combinator: span anywhere inside .descendant-demo === */
+    .descendant-demo span {
+      color: green;
+      font-weight: bold;
+      /* descendant combinator demo */
+    }
+
+    /* Styling for structure */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f3f6fb;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header, footer {
+      background: #253348;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 32px 20px 40px;
+      max-width: 700px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #324c8c;
+      margin-bottom: 26px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSS Selectors Demo (Task 4)</h1>
+  </header>
+  <main>
+    <h2>Selector Examples</h2>
+    
+    <!-- Element selector example -->
+    <section>
+      <ul>
+        <li>Element Selector</li>
+        <li>Class Selector</li>
+        <li>ID Selector</li>
+        <li>Attribute Selector</li>
+        <li>Combinators</li>
+      </ul>
+    </section>
+    
+    <!-- Class selector -->
+    <section>
+      <p>This is a <span class="highlight">highlighted span</span> using a class selector.</p>
+    </section>
+    
+    <!-- ID selector -->
+    <section>
+      <p id="unique">This paragraph uses the ID selector.</p>
+    </section>
+
+    <!-- Attribute selector -->
+    <section>
+      <a href="https://www.example.com" target="_blank">This external link uses the attribute selector.</a>
+    </section>
+    
+    <!-- Child combinator -->
+    <section>
+      <ul class="direct-list">
+        <li>Direct Child (styled)</li>
+        <li>Direct Child (styled)
+          <ul>
+            <li>Nested Child (not styled)</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Adjacent sibling combinator -->
+    <section>
+      <h3>Sibling Demo</h3>
+      <p>This paragraph directly after h3 uses the adjacent sibling selector.</p>
+      <p>This one is not styled.</p>
+    </section>
+    
+    <!-- General sibling combinator -->
+    <section>
+      <h4>General Sibling Demo</h4>
+      <div>Some content in between</div>
+      <a href="#">This link uses the general sibling combinator.</a>
+      <a href="#">So does this one.</a>
+    </section>
+    
+    <!-- Descendant combinator -->
+    <section class="descendant-demo">
+      <p>
+        Descendant Selector: <span>This span is styled.</span>
+      </p>
+      <div>
+        <span>So is this span!</span>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 CSS Selector Demo</p>
+  </footer>
+</body>
+</html>

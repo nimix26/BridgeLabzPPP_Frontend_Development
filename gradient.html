@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Gradient Backgrounds</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Fixed Header */
+        header {
+            background-color: #fff;
+            border-bottom: 2px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            
+            /* Fixed positioning */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Fixed Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            
+            /* Fixed positioning */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .section {
+            min-height: 100vh; /* Full viewport height */
+            padding: 100px 40px; /* Padding to avoid header/footer */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .section-content {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        /* Section 1: Linear Gradient */
+        .linear {
+            background: linear-gradient(to right bottom, #4e54c8, #8f94fb);
+        }
+
+        /* Section 2: Radial Gradient with Parallax Effect */
+        .radial {
+            background: radial-gradient(circle, #ff6a00, #ee0979);
+            
+            /* Parallax-like effect */
+            background-attachment: fixed;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>Fixed Header</header>
+
+    <main>
+        <section class="section linear">
+            <div class="section-content">
+                <h2>Linear Gradient</h2>
+                <p>This section uses a <code>linear-gradient()</code>, transitioning from top-left (blue) to bottom-right (purple).</p>
+            </div>
+        </section>
+
+        <section class="section radial">
+            <div class="section-content">
+                <h2>Radial Gradient</h2>
+                <p>This section uses a <code>radial-gradient()</code> (orange to pink) with <code>background-attachment: fixed;</code> to create a parallax-like scrolling effect.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>Fixed Footer</footer>
+</body>
+</html>

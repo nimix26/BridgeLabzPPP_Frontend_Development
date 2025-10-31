@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Height and Width</title>
+    <style>
+        html, body {
+            height: 100%; /* Make html and body take full height */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+        }
+        body {
+            /* Flexbox to center everything */
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center;     /* Vertical centering */
+            gap: 20px;
+        }
+        
+        .box {
+            border: 2px solid #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Box 1: px and % */
+        .box-1 {
+            background-color: #e74c3c;
+            width: 300px;
+            height: 150px;
+        }
+
+        /* Box 2: vh and em */
+        .box-2 {
+            background-color: #3498db;
+            width: 20em; /* 20 * current font size */
+            height: 40vh; /* 40% of viewport height */
+            font-size: 16px; /* Base for 'em' */
+        }
+
+        /* Box 3: min/max and overflow */
+        .box-3 {
+            background-color: #2ecc71;
+            width: 300px;
+            max-width: 80%; /* Max 80% of parent width */
+            min-height: 100px; /* At least 100px tall */
+            height: 150px;
+            
+            overflow: auto; /* Show scrollbar if content overflows */
+        }
+    </style>
+</head>
+<body>
+    <div class="box box-1">
+        <strong>Box 1</strong><br>
+        Width: 300px<br>
+        Height: 150px
+    </div>
+
+    <div class="box box-2">
+        <strong>Box 2</strong><br>
+        Width: 20em<br>
+        Height: 40vh
+    </div>
+
+    <div class="box box-3">
+        <strong>Box 3 (with Overflow)</strong><br>
+        Width: 300px (max 80%)<br>
+        Min-Height: 100px<br>
+        <p>This content is designed to overflow the box's height to demonstrate the 'overflow: auto' property. When the content is too tall for the container, a scrollbar will appear. This is very useful for user-generated content or dynamic data.</p>
+    </div>
+</body>
+</html>

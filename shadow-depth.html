@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Shadows and Depth</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #444;
+            /* Text Shadow */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            /* Arrange cards in a row using Flexbox */
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #ffffff;
+            width: 300px;
+            padding: 25px;
+            border-radius: 10px;
+            
+            /* CSS Transition for smooth animation */
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Card 1: Subtle Shadow */
+        .card-1 {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card 2: Deeper Shadow */
+        .card-2 {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Card 3: Inset Shadow */
+        .card-3 {
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Hover Effect: Lift up with a larger shadow */
+        .card:hover {
+            transform: translateY(-10px); /* Lifts the card up */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shadows and Depth Effect</h1>
+    <div class="container">
+        <div class="card card-1">
+            <h2>Card One</h2>
+            <p>This card has a subtle <code>box-shadow</code>. On hover, it lifts up and the shadow becomes larger, creating a depth effect.</p>
+        </div>
+        <div class="card card-2">
+            <h2>Card Two</h2>
+            <p>This card has a deeper, more pronounced <code>box-shadow</code> by default. The hover effect is the same, enhancing the 3D feel.</p>
+        </div>
+        <div class="card card-3">
+            <h2>Card Three</h2>
+            <p>This card uses an <code>inset</code> shadow for a pressed-in look. On hover, it reverts to a standard "lifted" shadow.</p>
+        </div>
+    </div>
+</body>
+</html>

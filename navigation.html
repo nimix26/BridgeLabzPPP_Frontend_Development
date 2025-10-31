@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Navigation Bar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        /* --- Navbar Styling --- */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            
+            /* Responsive: Use Flexbox for layout */
+            display: flex;
+            justify-content: center; /* Center links horizontally */
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Horizontal links */
+        }
+        
+        .navbar li {
+            /* No flex behavior needed here */
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px 20px;
+            text-decoration: none;
+            border-bottom: 3px solid transparent; /* Space for underline effect */
+            
+            /* Smooth hover transition */
+            transition: all 0.3s ease;
+        }
+
+        /* --- Hover and Active Effects --- */
+        
+        .navbar a:hover {
+            background-color: #555;
+            border-bottom-color: #4CAF50; /* Underline on hover */
+        }
+        
+        .navbar a.active {
+            background-color: #4CAF50; /* Highlight active link */
+            color: white;
+            border-bottom-color: #fff;
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .content {
+            padding: 30px;
+            min-height: 60vh;
+        }
+
+        /* --- Responsive: Stack Vertically below 700px --- */
+        @media screen and (max-width: 700px) {
+            .navbar ul {
+                flex-direction: column; /* Stack vertically */
+                width: 100%;
+            }
+            
+            .navbar a {
+                text-align: left; /* Align text left on mobile */
+                border-bottom: 1px solid #444; /* Separator lines */
+            }
+            
+            .navbar a:hover,
+            .navbar a.active {
+                border-bottom-color: #4CAF50; /* Consistent highlight */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <h1>Responsive Navigation Bar</h1>
+        <p>This page features a horizontal navigation bar. Resize your browser window to be less than 700px wide to see the links stack vertically.</p>
+        <p>The links have smooth <code>transition: all 0.3s ease;</code> for hover effects, and the 'Home' link is styled as <code>.active</code>.</p>
+    </div>
+
+    <footer class="footer">
+        <p>Simple Centered Footer Text</p>
+    </footer>
+</body>
+</html>

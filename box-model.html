@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Box Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* Center demonstration using Flexbox */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .demo-box {
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        /* --- Standard Box Model --- */
+        .standard {
+            background: #d4edda; /* Content */
+            padding: 40px;
+            border: 15px solid #f5c6cb;
+            margin: 30px;
+            
+            /*
+            Total width = width + padding(L+R) + border(L+R)
+                        = 300px + (40px+40px) + (15px+15px) = 390px
+            */
+        }
+
+        /* --- Border-Box Model --- */
+        .border-box {
+            box-sizing: border-box; /* This is the key property! */
+            
+            background: #d1ecf1; /* Content */
+            padding: 40px;
+            border: 15px solid #bee5eb;
+            margin: 30px;
+            
+            /*
+            Total width = width
+                        = 300px
+            Padding and border are included *inside* the 300px width.
+            */
+        }
+        
+        /* Using pseudo-elements to label the layers */
+        .demo-box::before, .demo-box::after {
+            position: absolute;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Margin label */
+        .standard::before {
+            content: "Margin (30px)";
+            top: -20px;
+            left: 0;
+            color: #555;
+        }
+        
+        /* Border label */
+        .standard::after {
+            content: "Border (15px)";
+            top: 10px;
+            left: 10px;
+            color: #721c24;
+        }
+        
+        /* Padding label */
+        .standard .content::before {
+            content: "Padding (40px)";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #155724;
+        }
+        
+        .content {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .standard .content {
+             background-color: #c3e6cb;
+        }
+        .border-box .content {
+             background-color: #b8daff;
+        }
+        
+        .description {
+            max-width: 390px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>The CSS Box Model</h1>
+    
+    <div class="container">
+        <div>
+            <h2>1. Standard Model (content-box)</h2>
+            <div class="demo-box standard">
+                <div class="content">Content (300x200)</div>
+            </div>
+            <p class="description">
+                <strong>Total Width: 390px</strong><br>
+                (300px width + 80px padding + 30px border)
+            </p>
+        </div>
+        
+        <div>
+            <h2>2. Border-Box Model</h2>
+            <div class="demo-box border-box">
+                <div class="content">Content (230x130)</div>
+            </div>
+            <p class="description">
+                <strong>Total Width: 300px</strong><br>
+                (Width includes padding and border)
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. CSS Transformations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            /* Arrange boxes horizontally */
+            display: flex;
+            gap: 80px; /* Extra space for transformations */
+            text-align: center;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+        .box-wrapper {
+            width: 150px;
+            height: 150px;
+            /* This wrapper helps contain the transform */
+            perspective: 500px; /* Adds 3D perspective */
+        }
+        .box {
+            width: 100%;
+            height: 100%;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Smooth transition for all properties */
+            transition: all 0.4s ease;
+        }
+        .label {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* --- Transformations on Hover --- */
+        
+        .box-wrapper:hover .rotate {
+            transform: rotate(45deg); /* Rotate 45 degrees */
+            background-color: #2ecc71;
+        }
+        
+        .box-wrapper:hover .scale {
+            transform: scale(1.3); /* Scale up by 30% */
+            background-color: #e74c3c;
+        }
+
+        .box-wrapper:hover .translate {
+            transform: translate(20px, -20px); /* Move right and up */
+            background-color: #f1c40f;
+        }
+        
+        .box-wrapper:hover .skew {
+            transform: skew(20deg, 10deg); /* Skew on X and Y axis */
+            background-color: #9b59b6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box-wrapper">
+            <div class="box rotate">Rotate</div>
+            <div class="label">rotate(45deg)</div>
+        </div>
+        
+        <div class="box-wrapper">
+            <div class="box scale">Scale</div>
+            <div class="label">scale(1.3)</div>
+        </div>
+        
+        <div class="box-wrapper">
+            <div class="box translate">Translate</div>
+            <div class="label">translate(20px, -20px)</div>
+        </div>
+        
+        <div class="box-wrapper">
+            <div class="box skew">Skew</div>
+            <div class="label">skew(20deg, 10deg)</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pseudo-classes Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    padding: 40px;
+    gap: 50px;
+  }
+
+  /* Container style */
+  .box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 250px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  /* Links */
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: #0077cc;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    background: #0077cc;
+    color: white;
+  }
+
+  a:active {
+    background: #005fa3;
+  }
+
+  a:focus {
+    outline: 2px solid orange;
+  }
+
+  /* Buttons */
+  button {
+    display: block;
+    width: 100%;
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 10px;
+  }
+
+  button:hover {
+    background: #43a047;
+  }
+
+  button:active {
+    background: #2e7d32;
+  }
+
+  button:focus {
+    outline: 2px solid yellow;
+  }
+
+  /* List items */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  li:hover {
+    background: #bbb;
+  }
+
+  /* Highlight every 2nd list item */
+  li:nth-child(2n) {
+    background: #c8e6c9;
+  }
+
+  /* Highlight every 3rd list item differently */
+  li:nth-child(3n) {
+    background: #ffcdd2;
+  }
+
+  .explanation {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Links Example -->
+  <div class="box">
+    <h2>Links</h2>
+    <a href="#">Hover / Focus / Active</a>
+    <p class="explanation">
+      <b>:hover</b> → color + background change<br>
+      <b>:focus</b> → orange outline<br>
+      <b>:active</b> → darker background while pressed
+    </p>
+  </div>
+
+  <!-- Buttons Example -->
+  <div class="box">
+    <h2>Buttons</h2>
+    <button>Click Me</button>
+    <p class="explanation">
+      <b>:hover</b> → lighter green<br>
+      <b>:active</b> → dark green<br>
+      <b>:focus</b> → yellow outline
+    </p>
+  </div>
+
+  <!-- List Example -->
+  <div class="box">
+    <h2>List Items</h2>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+    <p class="explanation">
+      <b>:nth-child(2n)</b> → green shade<br>
+      <b>:nth-child(3n)</b> → red shade<br>
+      <b>:hover</b> → slightly darker background
+    </p>
+  </div>
+
+</body>
+</html>

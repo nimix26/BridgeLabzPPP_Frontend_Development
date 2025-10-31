@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Button Collection - Task 5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f9fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .button-row {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.7em 2.2em;
+      border-radius: 24px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 18px rgba(44,45,46,0.07);
+      transition: background 0.22s, color 0.17s, box-shadow 0.21s, transform 0.14s;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #2846d7 30%, #4367f3 100%);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(67,103,243,0.17);
+      border: none;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: linear-gradient(90deg, #4367f3 0%, #2846d7 100%);
+      color: #e3e7fd;
+      animation: bounce 0.22s;
+    }
+    .btn-primary:active:not(:disabled) {
+      background: #1c3777;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(44,45,46,0.07);
+      transform: scale(0.96);
+    }
+    .btn-primary:focus-visible {
+      box-shadow: 0 0 0 3px #b7c6ff, 0 4px 24px rgba(67,103,243,0.17);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #2846d7;
+      box-shadow: 0 4px 18px rgba(44,45,46,0.07);
+      border: 2px solid #2846d7;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: #f3f5ff;
+      color: #4367f3;
+      border-color: #4367f3;
+    }
+    .btn-secondary:active:not(:disabled) {
+      background: #e2e7fc;
+      color: #1a3260;
+      border-color: #2846d7;
+      transform: scale(0.97);
+    }
+    .btn-secondary:focus-visible {
+      box-shadow: 0 0 0 3px #b7c6ff;
+      border-color: #2846d7;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #4367f3;
+      border: 2px solid #4367f3;
+    }
+    .btn-outline:hover:not(:disabled) {
+      background: #e7f0ff;
+      color: #1c3777;
+      border-color: #2846d7;
+    }
+    .btn-outline:active:not(:disabled) {
+      background: #d7e7fd;
+      color: #163067;
+      border-color: #4367f3;
+      transform: scale(0.96);
+    }
+    .btn-outline:focus-visible {
+      box-shadow: 0 0 0 3px #b7c6ff;
+      border-color: #4367f3;
+    }
+
+    button:disabled, .btn-disabled {
+      background: #e0e3eb !important;
+      color: #a2a8b1 !important;
+      box-shadow: none !important;
+      border: none !important;
+      cursor: not-allowed !important;
+      filter: grayscale(0.16);
+    }
+
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.11); }
+      60%  { transform: scale(0.96); }
+      100% { transform: scale(1); }
+    }
+
+    .btn-primary:active:not(:disabled)::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.35);
+      border-radius: 50%;
+      animation: ripple 0.34s ease;
+      pointer-events: none;
+    }
+    @keyframes ripple {
+      to {
+        width: 220px;
+        height: 220px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="button-row">
+    <button class="btn-primary">Primary</button>
+    <button class="btn-secondary">Secondary</button>
+    <button class="btn-outline">Outline</button>
+    <button class="btn-primary" disabled>Disabled</button>
+  </div>
+</body>
+</html>

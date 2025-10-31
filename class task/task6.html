@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 6: CSS Animation Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #f8fafc;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .anim-row {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      align-items: center;
+      min-height: 30vh;
+      margin-top: 30px;
+    }
+   
+    .moving-box {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #556bfa, #25d9b3);
+      border-radius: 18px;
+      box-shadow: 0 6px 28px rgba(37,105,243,0.24);
+      animation: moveSide 2.7s ease-in-out infinite alternate;
+      
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+    }
+    @keyframes moveSide {
+      from { transform: translateX(-40px); }
+      to   { transform: translateX(40px); }
+    }
+
+    
+    .bouncing-ball {
+      width: 56px;
+      height: 56px;
+      background: radial-gradient(ellipse at 60% 40%, #ffed6a 80%, #fbb034 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 30px 0 rgba(250,184,38,0.22);
+      animation: bounce 1.13s cubic-bezier(.44,.81,.47,1.23) infinite both;
+      animation-direction: alternate;
+      
+      animation-delay: 0.4s;
+    }
+    @keyframes bounce {
+      0%   {
+        transform: translateY(0) scaleX(1) scaleY(1);
+        box-shadow: 0 8px 30px 0 rgba(250,184,38,0.22);
+      }
+      10%  {
+        transform: translateY(8px) scaleX(1.15) scaleY(0.85);
+      }
+      40%  {
+        transform: translateY(-82px) scaleX(0.95) scaleY(1.12);
+      }
+      50% {
+        transform: translateY(-96px) scaleX(0.97) scaleY(1.09);
+      }
+      60%  {
+        transform: translateY(-82px) scaleX(0.95) scaleY(1.12);
+      }
+      85%  {
+        transform: translateY(8px) scaleX(1.12) scaleY(0.88);
+        box-shadow: 0 20px 40px -10px rgba(250,184,38,0.18);
+      }
+      100% {
+        transform: translateY(0) scaleX(1) scaleY(1);
+        box-shadow: 0 8px 30px 0 rgba(250,184,38,0.22);
+      }
+    }
+
+    
+    .glow-pulse {
+      width: 68px;
+      height: 68px;
+      background: linear-gradient(135deg, #a23fff 40%, #65eaff 100%);
+      border-radius: 50%;
+      filter: blur(0px);
+      box-shadow: 0 0 0 0 rgba(162,63,255,0.35), 0 2px 22px 0 rgba(62,153,255,0.23);
+      animation: glowPulse 1.7s ease-in-out infinite alternate;
+      animation-delay: 0.7s;
+    }
+    @keyframes glowPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(162,63,255,0.35), 0 2px 22px 0 rgba(62,153,255,0.23);
+        filter: blur(0px);
+      }
+      60% {
+        transform: scale(1.22);
+        box-shadow: 0 0 50px 18px rgba(162,63,255,0.13), 0 2px 44px 0 rgba(62,153,255,0.26);
+        filter: blur(1.5px);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(162,63,255,0.35), 0 2px 22px 0 rgba(62,153,255,0.23);
+        filter: blur(0px);
+      }
+    }
+
+    .label {
+      text-align: center;
+      font-size: 1.09em;
+      color: #394960;
+      margin-top: 18px;
+    }
+    @media (max-width: 700px) {
+      .anim-row {flex-direction: column; gap: 50px;}
+    }
+  </style>
+</head>
+<body>
+  <h2 style="color:#324c8c;text-align:center;margin-bottom:30px;">Task 6: CSS Animation Demo</h2>
+  <div class="anim-row">
+    <div>
+      <div class="moving-box"></div>
+      <div class="label">Moving Box</div>
+    </div>
+    <div>
+      <div class="bouncing-ball"></div>
+      <div class="label">Bouncing Ball</div>
+    </div>
+    <div>
+      <div class="glow-pulse"></div>
+      <div class="label">Glowing Pulse</div>
+    </div>
+  </div>
+</body>
+</html>

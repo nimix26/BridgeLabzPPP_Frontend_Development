@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            background: #fff;
+            width: 350px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        /* Progress bar container */
+        .progress-container {
+            width: 100%;
+            background: #ddd;
+            border-radius: 20px;
+            margin-top: 20px;
+            height: 20px;
+        }
+
+        /* Actual progress bar */
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 20px;
+            transition: width 1s ease-in-out;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e2ffe2;
+            border-left: 5px solid #2ecc71;
+            border-radius: 6px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>BMI Calculator</h2>
+
+        <input type="number" id="weight" placeholder="Enter weight (kg)">
+        <input type="number" id="height" placeholder="Enter height (meters)">
+
+        <button onclick="calculateBMI()">Calculate BMI</button>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="result" id="resultBox"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            let w = Number(document.getElementById("weight").value);
+            let h = Number(document.getElementById("height").value);
+
+            if (w <= 0 || h <= 0) {
+                alert("Enter valid numbers, bro 😭");
+                return;
+            }
+
+            let bmi = w / (h * h); // BMI formula
+
+            let category = "";
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = "Normal";
+            } else if (bmi >= 25 && bmi < 30) {
+                category = "Overweight";
+            } else {
+                category = "Obese";
+            }
+
+            // Update progress bar (BMI capped at 40 for visuals)
+            let progressValue = Math.min(bmi * 2.5, 100); 
+            document.getElementById("progressBar").style.width = progressValue + "%";
+
+            let resultBox = document.getElementById("resultBox");
+            resultBox.style.display = "block";
+
+            resultBox.innerHTML = `
+                <strong>Your BMI:</strong> ${bmi.toFixed(2)} <br>
+                <strong>Status:</strong> ${category}
+            `;
+        }
+    </script>
+
+</body>
+</html>

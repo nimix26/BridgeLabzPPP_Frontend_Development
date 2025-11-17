@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Bill Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            background: #fff;
+            width: 350px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e2ffe2;
+            border-left: 5px solid #2ecc71;
+            border-radius: 6px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Grocery Bill Calculator</h2>
+
+        <input type="number" id="price" placeholder="Enter price per item">
+        <input type="number" id="quantity" placeholder="Enter quantity">
+
+        <button onclick="calculateBill()">Calculate</button>
+
+        <div class="result" id="resultBox"></div>
+    </div>
+
+    <script>
+        function calculateBill() {
+            let price = Number(document.getElementById("price").value);
+            let qty = Number(document.getElementById("quantity").value);
+
+            let total = price * qty;
+            let finalAmount = total;
+
+            if (total > 1000) {
+                finalAmount = total - (total * 0.10); // 10% discount
+            }
+
+            let resultBox = document.getElementById("resultBox");
+            resultBox.style.display = "block";
+
+            resultBox.innerHTML = `
+                <strong>Total Bill:</strong> ₹${total.toFixed(2)} <br>
+                ${total > 1000 ? "<strong>10% Discount Applied!</strong><br>" : ""}
+                <strong>Final Amount:</strong> ₹${finalAmount.toFixed(2)}
+            `;
+        }
+    </script>
+
+</body>
+</html>

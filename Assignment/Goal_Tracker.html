@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step Goal Tracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121826;
+      color: #f9fafb;
+    }
+
+    .app {
+      background: #1f2933;
+      padding: 24px 28px;
+      border-radius: 16px;
+      width: 360px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .goal-info {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .goal-info span {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .input-area label {
+      font-size: 0.9rem;
+    }
+
+    .input-area input {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      background: #111827;
+      color: #f9fafb;
+      outline: none;
+    }
+
+    .input-area input:focus {
+      border-color: #4ade80;
+    }
+
+    .input-area button {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: #4ade80;
+      color: #022c22;
+      transition: 0.1s ease;
+    }
+
+    .input-area button:hover {
+      background: #22c55e;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.4);
+    }
+
+    .dashboard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    
+    .progress-circle {
+      --progress: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(#4ade80 calc(var(--progress) * 1%), #374151 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .inner-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #percentText {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .stats {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .stats span {
+      font-weight: 600;
+    }
+
+    #statusText {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #374151;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <h1>Step Goal Tracker</h1>
+    <p class="goal-info">Daily Goal: <span>10,000 steps</span></p>
+
+    <div class="input-area">
+      <label for="stepsInput">Enter your steps:</label>
+      <input type="number" id="stepsInput" placeholder="e.g. 6500" min="0" />
+      <button id="updateBtn">Update</button>
+    </div>
+
+    <div class="dashboard">
+      <div class="progress-circle" id="progressCircle">
+        <div class="inner-circle">
+          <span id="percentText">0%</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <p>Steps: <span id="stepsDisplay">0</span></p>
+        <p>Status: <span id="statusText">Keep Going</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GOAL = 10000;
+
+    const stepsInput = document.getElementById("stepsInput");
+    const updateBtn = document.getElementById("updateBtn");
+    const stepsDisplay = document.getElementById("stepsDisplay");
+    const statusText = document.getElementById("statusText");
+    const percentText = document.getElementById("percentText");
+    const progressCircle = document.getElementById("progressCircle");
+
+    updateBtn.addEventListener("click", () => {
+      const steps = Number(stepsInput.value);
+
+      if (isNaN(steps) || steps < 0) {
+        alert("Bruh enter valid steps 😭");
+        return;
+      }
+
+      stepsDisplay.textContent = steps;
+
+      const message = steps >= GOAL ? "Goal Achieved" : "Keep Going";
+      statusText.textContent = message;
+
+      let progress = (steps / GOAL) * 100;
+      if (progress > 100) progress = 100;
+
+      progressCircle.style.setProperty("--progress", progress);
+      percentText.textContent = Math.round(progress) + "%";
+    });
+  </script>
+</body>
+</html>

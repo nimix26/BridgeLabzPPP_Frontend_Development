@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q9 - Form Validation</title>
+  <style>
+    body { font-family: Arial; padding:20px; max-width:500px; margin:auto; }
+    label { display:block; margin-top:8px; }
+    input { width:100%; padding:8px; margin-top:4px; }
+    .error { color:#b30000; font-size:13px; min-height:18px; }
+    .success { color:green; font-weight:bold; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <h2>Form Validation (preventDefault, live errors)</h2>
+  <form id="myForm" novalidate>
+    <label>Name (required)
+      <input id="name" name="name" />
+      <div id="errName" class="error"></div>
+    </label>
+    <label>Email (required, must contain @)
+      <input id="email" name="email" />
+      <div id="errEmail" class="error"></div>
+    </label>
+    <label>Password (min 6 chars)
+      <input id="password" type="password" name="password" />
+      <div id="errPass" class="error"></div>
+    </label>
+    <div style="margin-top:10px;">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div id="result" class="success" style="display:none;"></div>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const passEl = document.getElementById('password');
+
+    const errName = document.getElementById('errName');
+    const errEmail = document.getElementById('errEmail');
+    const errPass = document.getElementById('errPass');
+    const result = document.getElementById('result');
+
+    // validate function returns true if valid
+    function validate() {
+      let ok = true;
+      if (!nameEl.value.trim()) {
+        errName.textContent = 'Name is required.';
+        ok = false;
+      } else errName.textContent = '';
+
+      const em = emailEl.value.trim();
+      if (!em) {
+        errEmail.textContent = 'Email is required.';
+        ok = false;
+      } else if (!em.includes('@')) {
+        errEmail.textContent = 'Email must contain @.';
+        ok = false;
+      } else errEmail.textContent = '';
+
+      const pw = passEl.value;
+      if (!pw || pw.length < 6) {
+        errPass.textContent = 'Password must be at least 6 characters.';
+        ok = false;
+      } else errPass.textContent = '';
+
+      return ok;
+    }
+
+    // preventDefault on submit and show inline errors
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // stop actual submission
+      result.style.display = 'none';
+      if (validate()) {
+        result.textContent = 'Form Submitted Successfully';
+        result.style.display = 'block';
+      }
+    });
+
+    // Live error removal on input
+    nameEl.addEventListener('input', () => { if (nameEl.value.trim()) errName.textContent = ''; });
+    emailEl.addEventListener('input', () => { if (emailEl.value.includes('@')) errEmail.textContent = ''; });
+    passEl.addEventListener('input', () => { if (passEl.value.length >= 6) errPass.textContent = ''; });
+  </script>
+</body>
+</html>

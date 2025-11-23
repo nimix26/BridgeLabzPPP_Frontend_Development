@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q1 - Dynamic Product List</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width:700px; margin:auto; }
+    h1 { font-size:18px; }
+    input[type="text"] { width:70%; padding:8px; }
+    button { padding:8px 10px; margin-left:6px; }
+    ul { list-style:none; padding:0; margin-top:15px; }
+    li { padding:8px; border:1px solid #ddd; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+    .left { display:flex; gap:10px; align-items:center; }
+    .edit-input { padding:6px; width:250px; }
+    .controls button { margin-left:6px; }
+    .hint { color:#666; font-size:13px; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Product List (Add · Edit · Delete)</h1>
+  <div>
+    <input id="productInput" type="text" placeholder="Enter product name" />
+    <button id="addBtn">Add</button>
+  </div>
+  <div class="hint">Tip: Click Edit to change name. Click outside while editing to auto-save.</div>
+
+  <ul id="productList"></ul>
+
+  <script>
+    
+    const productInput = document.getElementById('productInput');
+    const addBtn = document.getElementById('addBtn');
+    const productList = document.getElementById('productList');
+
+    
+    addBtn.addEventListener('click', () => {
+      const name = productInput.value.trim();
+      if (!name) return alert('Please enter a product name.');
+      const li = createProductItem(name);
+      productList.appendChild(li);
+      productInput.value = '';
+    });
+
+    function createProductItem(name) {
+      const li = document.createElement('li');
+
+      const left = document.createElement('div');
+      left.className = 'left';
+      const textSpan = document.createElement('span');
+      textSpan.className = 'name';
+      textSpan.textContent = name;
+
+      left.appendChild(textSpan);
+
+      const controls = document.createElement('div');
+      controls.className = 'controls';
+      const editBtn = document.createElement('button');
+      editBtn.textContent = 'Edit';
+      editBtn.className = 'edit';
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.className = 'delete';
+
+      controls.appendChild(editBtn);
+      controls.appendChild(delBtn);
+
+      li.appendChild(left);
+      li.appendChild(controls);
+      return li;
+    }
+
+    // Use event delegation on UL for Edit/Delete clicks
+    productList.addEventListener('click', (e) => {
+      const btn = e.target;
+      const li = btn.closest('li');
+      if (!li) return;
+
+      if (btn.classList.contains('delete')) {
+        li.remove();
+      } else if (btn.classList.contains('edit')) {
+        enterEditMode(li);
+      }
+    });
+
+    let currentEditing = null;
+
+    function enterEditMode(li) {
+      if (currentEditing && currentEditing !== li) {
+        saveEdit(currentEditing); // auto save previous edit
+      }
+      if (li.querySelector('.edit-input')) return; // already editing
+
+      const nameSpan = li.querySelector('.name');
+      const oldText = nameSpan.textContent;
+      nameSpan.style.display = 'none';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'edit-input';
+      input.value = oldText;
+
+      li.querySelector('.left').insertBefore(input, nameSpan);
+      input.focus();
+      currentEditing = li;
+
+      // Save when Enter pressed
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter') {
+          saveEdit(li);
+        } else if (ev.key === 'Escape') {
+          cancelEdit(li, oldText);
+        }
+      });
+    }
+
+    // Save edit value
+    function saveEdit(li) {
+      const input = li.querySelector('.edit-input');
+      if (!input) return;
+      const newVal = input.value.trim() || 'Unnamed Product';
+      li.querySelector('.name').textContent = newVal;
+      input.remove();
+      li.querySelector('.name').style.display = '';
+      if (currentEditing === li) currentEditing = null;
+    }
+
+    function cancelEdit(li, oldText) {
+      const input = li.querySelector('.edit-input');
+      if (!input) return;
+      li.querySelector('.name').textContent = oldText;
+      input.remove();
+      li.querySelector('.name').style.display = '';
+      if (currentEditing === li) currentEditing = null;
+    }
+
+    // Click outside to auto-save
+    document.addEventListener('click', (e) => {
+      if (!currentEditing) return;
+      const inside = currentEditing.contains(e.target);
+      if (!inside) {
+        saveEdit(currentEditing);
+      }
+    });
+
+    // Also allow Enter in main input
+    productInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addBtn.click();
+    });
+
+    
+    ['Apple', 'Banana', 'Notebook'].forEach(n => productList.appendChild(createProductItem(n)));
+  </script>
+</body>
+</html>

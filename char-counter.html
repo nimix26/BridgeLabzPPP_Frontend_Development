@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q2 - Live Character Counter</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:20px; max-width:600px; margin:auto; }
+    textarea { width:100%; height:120px; padding:8px; font-size:14px; }
+    #counter { margin-top:8px; font-weight:bold; }
+    .yellow { color:#b38b00; }
+    .red { color:#b30000; }
+    button { padding:8px 12px; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <h2>Live Character Counter (Max 100)</h2>
+  <textarea id="txt" placeholder="Type here..."></textarea>
+  <div id="counter">100 characters remaining</div>
+  <button id="resetBtn">Reset</button>
+
+  <script>
+    // Simple logic:
+    const txt = document.getElementById('txt');
+    const counter = document.getElementById('counter');
+    const resetBtn = document.getElementById('resetBtn');
+    const MAX = 100;
+
+    function updateCounter() {
+      const len = txt.value.length;
+      const remaining = MAX - len;
+      counter.textContent = remaining + ' characters remaining';
+      counter.className = '';
+      if (remaining <= 0) {
+        counter.classList.add('red');
+      } else if (remaining <= 20) {
+        counter.classList.add('yellow');
+      }
+    }
+
+    // Prevent typing when at 0 using preventDefault on keydown
+    txt.addEventListener('keydown', (e) => {
+      const len = txt.value.length;
+      // Allow Backspace, Delete, Arrow keys when at limit
+      const allowedKeys = ['Backspace','Delete','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','Tab'];
+      if (len >= MAX && !allowedKeys.includes(e.key) && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+      }
+    });
+
+    // Update on input
+    txt.addEventListener('input', updateCounter);
+
+    resetBtn.addEventListener('click', () => {
+      txt.value = '';
+      updateCounter();
+      txt.focus();
+    });
+
+    updateCounter(); // initial
+  </script>
+</body>
+</html>

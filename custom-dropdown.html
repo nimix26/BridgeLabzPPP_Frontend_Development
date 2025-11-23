@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q8 - Custom Dropdown</title>
+  <style>
+    body { font-family: Arial; padding:20px; max-width:400px; margin:auto; }
+    .dropdown { position:relative; display:inline-block; }
+    .btn { padding:8px 12px; border:1px solid #ccc; cursor:pointer; }
+    .options { position:absolute; left:0; top:100%; background:#fff; border:1px solid #ccc; min-width:120px; display:none; z-index:10; }
+    .options div { padding:8px; cursor:pointer; }
+    .options div:hover { background:#f0f0f0; }
+    .open { display:block; }
+  </style>
+</head>
+<body>
+  <h2>Custom Dropdown</h2>
+  <div class="dropdown" id="myDropdown">
+    <div class="btn" id="ddBtn">Choose option</div>
+    <div class="options" id="ddOptions">
+      <div data-val="Option 1">Option 1</div>
+      <div data-val="Option 2">Option 2</div>
+      <div data-val="Option 3">Option 3</div>
+    </div>
+  </div>
+
+  <script>
+    const dd = document.getElementById('myDropdown');
+    const btn = document.getElementById('ddBtn');
+    const opts = document.getElementById('ddOptions');
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      opts.classList.toggle('open');
+    });
+
+    // Clicking an option updates button text
+    opts.addEventListener('click', (e) => {
+      const option = e.target.closest('div[data-val]');
+      if (!option) return;
+      btn.textContent = option.getAttribute('data-val');
+      opts.classList.remove('open');
+    });
+
+    // Use capturing phase to close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      // capturing: this handler will run before bubble handlers
+      // If the click target is outside the dropdown, close options
+      if (!dd.contains(e.target)) {
+        opts.classList.remove('open');
+      }
+    }, true); // true => capturing
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q7 - Mouse Path & Coordinates Logger</title>
+  <style>
+    body { font-family: Arial; padding:20px; max-width:700px; margin:auto;}
+    .box { width:400px; height:400px; border:2px dashed #666; position:relative; margin-bottom:10px; background:#fafafa; }
+    .coords { font-weight:bold; }
+    .dot { width:10px; height:10px; background:red; border-radius:50%; position:absolute; transform:translate(-50%,-50%); pointer-events:none; }
+  </style>
+</head>
+<body>
+  <h2>Mouse Tracker Box (400×400)</h2>
+  <div class="box" id="box"></div>
+  <div>Coordinates inside box: <span class="coords" id="coords">-- , --</span></div>
+  <div style="margin-top:10px; color:#555;">Double-click inside the box to drop a red dot.</div>
+
+  <script>
+    const box = document.getElementById('box');
+    const coords = document.getElementById('coords');
+
+    box.addEventListener('mousemove', (e) => {
+      // clientX/Y relative to viewport; want relative to box
+      const rect = box.getBoundingClientRect();
+      const x = Math.round(e.clientX - rect.left);
+      const y = Math.round(e.clientY - rect.top);
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) return;
+      coords.textContent = x + ' , ' + y;
+    });
+
+    box.addEventListener('dblclick', (e) => {
+      const rect = box.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.style.left = x + 'px';
+      dot.style.top = y + 'px';
+      box.appendChild(dot);
+    });
+
+    // optional: clear dots on double right-click? (not required)
+  </script>
+</body>
+</html>

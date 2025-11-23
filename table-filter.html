@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q6 - Table Filter</title>
+  <style>
+    body { font-family: Arial; padding:20px; max-width:700px; margin:auto; }
+    input { width:100%; padding:8px; margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+    .noresults { text-align:center; padding:10px; color:#b30000; }
+  </style>
+</head>
+<body>
+  <h2>Student Table Filter</h2>
+  <input id="search" placeholder="Type name or branch (case-insensitive)..." />
+
+  <table id="tbl">
+    <thead><tr><th>Name</th><th>Branch</th><th>CGPA</th></tr></thead>
+    <tbody>
+      <tr><td>Asha</td><td>CSE</td><td>8.2</td></tr>
+      <tr><td>Rahul</td><td>ECE</td><td>7.5</td></tr>
+      <tr><td>Priya</td><td>ME</td><td>7.8</td></tr>
+      <tr><td>Vivek</td><td>CSE</td><td>8.5</td></tr>
+      <tr><td>Nisha</td><td>IT</td><td>7.9</td></tr>
+    </tbody>
+  </table>
+  <div id="noRes" class="noresults" style="display:none;">No results found</div>
+
+  <script>
+    const search = document.getElementById('search');
+    const tbl = document.getElementById('tbl').tBodies[0];
+    const noRes = document.getElementById('noRes');
+
+    function filter() {
+      const q = search.value.trim().toLowerCase();
+      let shown = 0;
+      for (let row of tbl.rows) {
+        const text = (row.cells[0].textContent + ' ' + row.cells[1].textContent + ' ' + row.cells[2].textContent).toLowerCase();
+        if (text.includes(q)) {
+          row.style.display = '';
+          shown++;
+        } else {
+          row.style.display = 'none';
+        }
+      }
+      noRes.style.display = shown ? 'none' : '';
+    }
+
+    search.addEventListener('input', filter);
+  </script>
+</body>
+</html>

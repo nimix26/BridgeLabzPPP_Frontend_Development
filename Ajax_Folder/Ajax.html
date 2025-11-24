@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 9 – jQuery All-in-One</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .highlight { background: yellow; }
+        .selected { border: 2px solid red; }
+        [data-discount='true'] { background: lightgreen; }
+        .banner { padding: 10px; background: pink; margin: 5px 0; }
+        .employee { display: block; margin: 5px 0; }
+        .keyword { background: yellow; }
+        .error { border: 2px solid red; }
+    </style>
+</head>
+
+<body>
+
+<h1>Ajax programs</h1>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q1 – GREETING PAGE -->
+<!-- --------------------------------------------------------------- -->
+<h2 id="greetText">Welcome!</h2>
+<p id="welcomeMsg">This is our website.</p>
+<button id="changeBtn">Change Greeting</button>
+<button id="toggleBtn">Toggle Welcome Message</button>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q2 – PRODUCT HIGHLIGHTS -->
+<!-- --------------------------------------------------------------- -->
+<h2>Products</h2>
+<div class="product" data-stock="yes">Laptop <span class="fav">❤️</span></div>
+<div class="product" data-stock="no" data-discount="true">Phone <span class="fav">❤️</span></div>
+<div class="product" data-stock="yes">Mouse <span class="fav">❤️</span></div>
+<div class="product" data-stock="no">Keyboard <span class="fav">❤️</span></div>
+<div class="product" data-stock="yes" data-discount="true">Tablet <span class="fav">❤️</span></div>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q3 – FAQ -->
+<!-- --------------------------------------------------------------- -->
+<h2>FAQ</h2>
+
+<div class="faq">
+    <h3 class="question">What is jQuery?</h3>
+    <p class="answer">A JavaScript library.</p>
+</div>
+<div class="faq">
+    <h3 class="question">What is AJAX?</h3>
+    <p class="answer">Technique for loading data.</p>
+</div>
+
+<input type="text" id="answerBox" placeholder="Focus here...">
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q4 – SPECIAL OFFER BANNERS -->
+<!-- --------------------------------------------------------------- -->
+<h2>Special Banners</h2>
+<div class="banner">Banner 1</div>
+<div class="banner">Banner 2</div>
+<div class="banner">Banner 3</div>
+
+<button id="hideB">Hide</button>
+<button id="showB">Show</button>
+<button id="slideB">Slide Toggle</button>
+<button id="fadeB">Fade Toggle</button>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q5 – TEAM MEMBERS -->
+<!-- --------------------------------------------------------------- -->
+<h2>Team</h2>
+
+<h3 class="manager">Manager A</h3>
+<p class="employee" data-dept="sales">Employee 1</p>
+<p class="employee" data-dept="sales">Employee 2</p>
+
+<h3 class="manager">Manager B</h3>
+<p class="employee" data-dept="tech">Employee 3</p>
+<p class="employee" data-dept="tech">Employee 4</p>
+
+<button id="randomEmp">Highlight Siblings of Random Employee</button>
+<button id="toggleTeam">Collapse/Expand Team</button>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q6 – SUBSCRIPTION PANEL -->
+<!-- --------------------------------------------------------------- -->
+<h2>Subscriptions</h2>
+
+<button id="sub">Subscribe</button>
+<button id="unsub">Unsubscribe</button>
+
+<div id="topics">
+    <button class="topic">Sports</button>
+    <button class="topic">News</button>
+</div>
+
+<button id="addTopic">Add Topic</button>
+<button id="removeTopic">Remove Sports</button>
+
+<p id="msg"></p>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q7 – SEARCH COURSES -->
+<!-- --------------------------------------------------------------- -->
+<h2>Courses</h2>
+<input type="text" id="searchBox" placeholder="Search courses...">
+<p>Matches: <span id="matchCount">0</span></p>
+
+<ul id="courseList">
+    <li class="course">JavaScript</li>
+    <li class="course">Python</li>
+    <li class="course">Java</li>
+    <li class="course">Machine Learning</li>
+    <li class="course">React</li>
+</ul>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q8 – BLOG POSTS -->
+<!-- --------------------------------------------------------------- -->
+<h2>Blog Posts</h2>
+
+<button id="addPost">Add New Post</button>
+<button id="addTop">Prepend Featured Post</button>
+<button id="removeLast">Remove Last Post</button>
+
+<div id="blog">
+    <p class="post">Welcome to the blog!</p>
+</div>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q9 – MULTI JQUERY WIDGETS (SIMULATED) -->
+<!-- --------------------------------------------------------------- -->
+<h2>Multi jQuery Version Demo</h2>
+<p>Just demonstrating noConflict()</p>
+
+<hr>
+
+<!-- --------------------------------------------------------------- -->
+<!-- Q10 – FORM VALIDATION -->
+<!-- --------------------------------------------------------------- -->
+<h2>Register</h2>
+
+Name: <input type="text" id="name"><br><br>
+Email: <input type="text" id="email"><br><br>
+Password: <input type="password" id="pass"><br><br>
+
+<button id="reg">Register</button>
+<p id="regMsg"></p>
+
+
+<!-- --------------------------------------------------------------- -->
+<!-- ALL JS IN ONE PLACE -->
+<!-- --------------------------------------------------------------- -->
+<script>
+
+$(document).ready(function () {
+
+    /* ------------------------------------------------- */
+    /* Q1 */
+    let hour = new Date().getHours();
+    if (hour < 12) $("#greetText").text("Good Morning!");
+    else if (hour < 18) $("#greetText").text("Good Afternoon!");
+    else $("#greetText").text("Good Evening!");
+
+    $("#changeBtn").click(() => $("#greetText").text("Stay strong, keep going!"));
+    $("#toggleBtn").click(() => $("#welcomeMsg").toggle());
+    $("#greetText").click(() => alert("You clicked the greeting!"));
+
+
+    /* ------------------------------------------------- */
+    /* Q2 */
+    $(".product").click(function () {
+        $(this).toggleClass("highlight");
+        if ($(this).data("stock") === "no") alert("Out of stock!");
+    });
+
+    $(".product").hover(
+        function () { $(this).append(" - details"); },
+        function () { $(this).text($(this).text().split(" -")[0]); }
+    );
+
+    $(".fav").click(function (e) {
+        e.stopPropagation();
+        $(this).toggleClass("selected");
+    });
+
+
+    /* ------------------------------------------------- */
+    /* Q3 */
+    $(".answer").hide();
+
+    $(".question").click(function () {
+        $(this).next(".answer").toggle();
+    });
+
+    $(".question").hover(
+        function () { $(this).css("color", "blue"); },
+        function () { $(this).css("color", "black"); }
+    );
+
+    $(".question").dblclick(() => $(".answer").hide());
+
+    $("#answerBox").focus(() => $(".question:first").css("background", "lightyellow"));
+    $("#answerBox").blur(() => $(".question:first").css("background", "white"));
+
+
+    /* ------------------------------------------------- */
+    /* Q4 */
+    $("#hideB").click(() => $(".banner").hide());
+    $("#showB").click(() => $(".banner").show());
+    $("#slideB").click(() => $(".banner").slideToggle());
+    $("#fadeB").click(() => $(".banner").fadeToggle());
+
+    let i = 0;
+    setInterval(function () {
+        $(".banner").fadeOut();
+        $(".banner").eq(i).fadeIn();
+        i = (i + 1) % $(".banner").length;
+    }, 5000);
+
+
+    /* ------------------------------------------------- */
+    /* Q5 */
+    $(".manager").click(function () {
+        $(this).nextUntil(".manager").css("background", "yellow");
+    });
+
+    $(".employee").hover(
+        function () { $(this).next().css("color", "blue"); },
+        function () { $(this).next().css("color", "black"); }
+    );
+
+    $("#randomEmp").click(function () {
+        let emp = $(".employee");
+        let r = Math.floor(Math.random() * emp.length);
+        $(emp[r]).siblings(".employee").css("background", "lightgreen");
+    });
+
+    $("#toggleTeam").click(() => $("body").find(".employee").toggle());
+
+
+    /* ------------------------------------------------- */
+    /* Q6 */
+    $("#sub").click(() => $("#msg").text("Subscribed!"));
+    $("#unsub").click(() => $("#msg").text("Unsubscribed!"));
+
+    $("#addTopic").click(function () {
+        $("#topics").append("<button class='topic'>New Topic</button>");
+    });
+
+    $(document).on("click", ".topic", function () {
+        alert("Topic clicked");
+    });
+
+    $("#removeTopic").click(function () {
+        $(".topic:contains('Sports')").off().remove();
+    });
+
+
+    /* ------------------------------------------------- */
+    /* Q7 */
+    $("#searchBox").keyup(function () {
+        let text = $(this).val().toLowerCase();
+        let count = 0;
+
+        $(".course").each(function () {
+            let course = $(this).text().toLowerCase();
+
+            if (course.includes(text)) {
+                $(this).show().css("background", "yellow");
+                count++;
+            } else {
+                $(this).hide();
+            }
+        });
+
+        $("#matchCount").text(count);
+    });
+
+
+    /* ------------------------------------------------- */
+    /* Q8 */
+    $("#addPost").click(() => $("#blog").append("<p class='post'>New Post Added</p>"));
+    $("#addTop").click(() => $("#blog").prepend("<p class='post'>Featured Post</p>"));
+    $("#removeLast").click(() => $("#blog .post").last().remove());
+
+
+    /* ------------------------------------------------- */
+    /* Q9 */
+    let jq1 = jQuery.noConflict(true);
+    let jq2 = jQuery.noConflict(true);
+    // Just keeping it simple for assignment.
+
+
+    /* ------------------------------------------------- */
+    /* Q10 */
+    $("#reg").click(function () {
+
+        let name = $("#name").val();
+        let email = $("#email").val();
+        let pass = $("#pass").val();
+        let valid = true;
+
+        $(".error").removeClass("error");
+
+        if (name === "") { $("#name").addClass("error"); valid = false; }
+        if (!email.includes("@")) { $("#email").addClass("error"); valid = false; }
+        if (pass.length < 8) { $("#pass").addClass("error"); valid = false; }
+
+        if (valid) $("#regMsg").text("Registration Successful!");
+        else $("#regMsg").text("Please fix the errors.");
+    });
+
+});
+</script>
+
+</body>
+</html>
